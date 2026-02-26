@@ -5,8 +5,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-df=pd.read_csv(r"Assets\Walking-1_TS-03155_2026-02-20-12-10-14_aligned.csv")
-df2=pd.read_csv(r"Assets\Walking-1_TS-03379_2026-02-20-12-10-14_aligned.csv")
+df=pd.read_csv(r"Assets/Walking-1_TS-03155_2026-02-20-12-10-14_aligned.csv")
+df2=pd.read_csv(r"Assets/Walking-1_TS-03379_2026-02-20-12-10-14_aligned.csv")
 
 # %%
 shank= df[['qx','qy','qz','qr']].values
@@ -34,8 +34,10 @@ r_knee=r1.inv() * r2
 r_knee_corrected=r_knee * r_offset.inv()
 # %%
 euler_knee=r_knee_corrected.as_euler('xyz', degrees=True)
-plt.plot(euler_knee)
-
+plt.plot(euler_knee[:,0], label='X-axis')
+plt.plot(euler_knee[:,1], label='Y-axis')
+plt.plot(euler_knee[:,2], label='Z-axis')
+plt.legend()
 
 plt.show()
 
