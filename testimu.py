@@ -5,8 +5,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-df=pd.read_csv(r"Assets\Walking-1_TS-03155_2026-02-20-12-10-14_aligned.csv")
-df2=pd.read_csv(r"Assets\Walking-1_TS-03379_2026-02-20-12-10-14_aligned.csv")
+df=pd.read_csv(r"Assets/Walking-1_TS-03155_2026-02-20-12-10-14_aligned.csv")
+df2=pd.read_csv(r"Assets/Walking-1_TS-03379_2026-02-20-12-10-14_aligned.csv")
 
 # %%
 shank= df[['qx','qy','qz','qr']].values
