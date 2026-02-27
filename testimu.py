@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from dataclasses import dataclass
 from pathlib import Path
-
+#%%
 df=pd.read_csv(r"Assets/Walking-1_TS-03155_2026-02-20-12-10-14_aligned.csv")
 df2=pd.read_csv(r"Assets/Walking-1_TS-03379_2026-02-20-12-10-14_aligned.csv")
 
@@ -113,7 +113,7 @@ joints = {
     'right_ankle':('R/shank', 'R/foot'),
 }
 
-conditions= ['squat', 'functional']
+conditions= ['squat', 'functional','jj','karate','latlunge','lunge','pickup','shoe','sts']
 
 results = {}
 
@@ -128,25 +128,45 @@ for condition in conditions:
             print(f"missing data for {condition}-{joint_name},skipping")
 results['functional']['right_knee'][:,2] *= -1
 results['squat']['right_knee'][:,2] *= -1
-
+results['karate']['right_knee'][:,2] *= -1
+results['sts']['right_knee'][:,2] *= -1
+results['shoe']['right_knee'][:,2] *= -1
 
 
 # %%
 
-plt.plot(results['functional']['right_knee'][:,2], label='right Knee flexion(flex+)')
-plt.plot(results['functional']['left_knee'][:,2], label= 'left knee flexion(flex+)')
-plt.plot(results['functional']['left_hip'][:,1], label='left hip abduction(add+)')
-plt.plot(results['functional']['right_hip'][:,1],label='right hip abduction(add+)')
+plt.plot(results['karate']['right_knee'][:,2], label='right Knee flexion(flex+)')
+plt.plot(results['karate']['left_knee'][:,2], label= 'left knee flexion(flex+)')
+plt.plot(results['karate']['left_hip'][:,1], label='left hip abduction(abd+)')
+plt.plot(results['karate']['right_hip'][:,1],label='right hip abduction(abd+)')
 plt.legend()
 plt.show()
 plt.close()
-
+#%%
 plt.plot(results['squat']['right_knee'][:,2], label='right knee flexion(flex+)')
 plt.plot(results['squat']['left_knee'][:,2],label= 'left knee flexion(flex+)')
 plt.legend()
 plt.show()
 plt.close()
 #%%
+plt.plot(results['sts']['right_knee'][:,2], label='right Knee flexion(flex+)')
+plt.plot(results['sts']['left_knee'][:,2], label= 'left knee flexion(flex+)')
+plt.plot(results['sts']['left_hip'][:,1], label='left hip abduction(abd+)')
+plt.plot(results['sts']['right_hip'][:,1],label='right hip abduction(abd+)')
+plt.legend()
+plt.show()
+plt.close()
 # %%
 print(trials.keys())
+# %%
+plt.plot(results['shoe']['right_knee'][:,2], label='right Knee flexion(flex+)')
+plt.plot(results['shoe']['left_knee'][:,2], label= 'left knee flexion(flex+)')
+plt.plot(results['shoe']['left_hip'][:,1], label='left hip abduction(abd+)')
+plt.plot(results['shoe']['right_hip'][:,1],label='right hip abduction(abd+)')
+plt.legend()
+plt.ylabel('angle')
+plt.xlabel('frames')
+plt.show()
+plt.close()
+
 # %%
